@@ -1,6 +1,6 @@
 import sys  # Import sys to get exception details like line number and file name
 import logging
-
+from src.logger import logging
 # Function to format a detailed error message
 def error_message_details(error, error_detail: sys):
     _, _, exc_tb = error_detail.exc_info()  # Get traceback object
@@ -21,5 +21,12 @@ class CustomException(Exception):
     
 
 
+if __name__ == '__main__':
+
+    try:
+        a = 1/0
+    except Exception as e:
+        logging.info('divide by zero')
+        raise CustomException(e,sys)
 
     
